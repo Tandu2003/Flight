@@ -4,6 +4,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    paddingBottom: 70,
   },
   headerContainer: {
     flexDirection: "row",
@@ -82,10 +83,25 @@ export default StyleSheet.create({
     marginVertical: 10,
   },
   destinationImage: {
-    width: "100%",
-    height: "auto",
     aspectRatio: 1.5,
-    // resizeMode: "contain",
     borderRadius: 10,
+  },
+  footerContainer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 70,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    backgroundColor: "#fff",
+  },
+  footerItem: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  footerText: {
+    fontSize: 14,
+    marginTop: 4,
   },
 });

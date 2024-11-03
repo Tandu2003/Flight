@@ -1,13 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView, Text, View, FlatList, TouchableOpacity, TextInput } from "react-native";
-import { FontAwesome6, Ionicons } from "@expo/vector-icons";
+import {
+  Image,
+  ScrollView,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
+import { FontAwesome, FontAwesome6, Ionicons } from "@expo/vector-icons";
 
 import styles from "./Home";
 import Loading from "@/src/components/Loading";
 
+interface City {
+  id: number;
+  city: string;
+  image: string;
+  minPrice: number;
+  maxPrice: number;
+}
+
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [citys, setCitys] = useState([]);
+  const [active, setActive] = useState<string>("home");
+
+  const menuItems = [
+    { name: "home", icon: "home", label: "Home" },
+    { name: "explore", icon: "globe", label: "Explore" },
+    { name: "profile", icon: "user", label: "Profile" },
+  ];
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -18,14 +43,6 @@ const Home = () => {
     };
     fetchCities();
   }, []);
-
-  interface City {
-    id: number;
-    city: string;
-    image: string;
-    minPrice: number;
-    maxPrice: number;
-  }
 
   const renderBestCity = ({ item }: { item: City }) => {
     return (
@@ -51,8 +68,8 @@ const Home = () => {
     return <Loading />;
   }
   return (
-    <ScrollView>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <ScrollView keyboardShouldPersistTaps="handled">
         <View style={styles.headerContainer}>
           <View style={styles.headerLeft}>
             <Image
@@ -70,39 +87,58 @@ const Home = () => {
 
           <FontAwesome6 name="user-circle" size={50} color="black" />
         </View>
-      </View>
 
-      <View style={styles.searchButton}>
-        <TouchableOpacity>
-          <Ionicons name="search-sharp" size={30} color="black" />
-        </TouchableOpacity>
-        <TextInput
-          placeholder="Find a flight"
-          placeholderTextColor={"#a1a1a1"}
-          style={styles.textSearch}
-        />
-      </View>
+        <View style={styles.searchButton}>
+          <TouchableOpacity>
+            <Ionicons name="search-sharp" size={30} color="black" />
+          </TouchableOpacity>
+          <TextInput
+            placeholder="Find a flight"
+            placeholderTextColor={"#a1a1a1"}
+            style={styles.textSearch}
+          />
+        </View>
 
-      <View style={styles.bestCityContainer}>
-        <Text style={styles.bestCityTitle}>The best cities for you</Text>
-        <FlatList
-          data={citys}
-          renderItem={renderBestCity}
-          keyExtractor={(item) => item.id.toString()}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-        />
-      </View>
+        <View style={styles.bestCityContainer}>
+          <Text style={styles.bestCityTitle}>The best cities for you</Text>
+          <FlatList
+            data={citys}
+            renderItem={renderBestCity}
+            keyExtractor={(item) => item.id.toString()}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
 
-      <View style={styles.destinationContainer}>
-        <Text style={styles.destinationTitle}>Explore Destinations</Text>
-        <FlatList
-          data={citys}
-          renderItem={renderDestination}
-          keyExtractor={(item) => item.id.toString()}
-        />
+        <View style={styles.destinationContainer}>
+          <Text style={styles.destinationTitle}>Explore Destinations</Text>
+          <FlatList
+            data={citys}
+            renderItem={renderDestination}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        </View>
+      </ScrollView>
+
+      <View style={styles.footerContainer}>
+        {menuItems.map((item) => (
+          <TouchableOpacity
+            key={item.name}
+            style={styles.footerItem}
+            onPress={() => setActive(item.name)}
+          >
+            <FontAwesome
+              name={item.icon as any}
+              size={24}
+              color={active === item.name ? "green" : "#666"}
+            />
+            <Text style={[styles.footerText, { color: active === item.name ? "green" : "#666" }]}>
+              {item.label}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
