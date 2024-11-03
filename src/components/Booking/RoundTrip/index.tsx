@@ -177,7 +177,7 @@ export default function RoundTrip() {
             <Calendar
               markingType={"period"}
               current={today}
-              onDayPress={() => handleDayPress}
+              onDayPress={handleDayPress}
               markedDates={getMarkedDates()}
             />
             <View style={styles.modalFooter}>

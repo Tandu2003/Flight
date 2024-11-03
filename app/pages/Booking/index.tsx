@@ -5,6 +5,7 @@ import { router } from "expo-router";
 
 import styles from "./Booking";
 import RoundTrip from "@/src/components/Booking/RoundTrip";
+import OneWay from "@/src/components/Booking/OneWay";
 
 const Booking = () => {
   const TRIP_TABS = {
@@ -53,7 +54,7 @@ const Booking = () => {
 
       <View style={styles.tabContent}>
         {selectedTab === TRIP_TABS.ROUND_TRIP && <RoundTrip />}
-        {selectedTab === TRIP_TABS.ONE_WAY && <Text>One Way</Text>}
+        {selectedTab === TRIP_TABS.ONE_WAY && <OneWay />}
         {selectedTab === TRIP_TABS.MULTI_CITY && <Text>Multi City</Text>}
       </View>
 
