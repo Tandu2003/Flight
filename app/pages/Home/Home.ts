@@ -45,6 +45,8 @@ export default StyleSheet.create({
   textSearch: {
     flex: 1,
     fontSize: 18,
+    fontWeight: "bold",
+    color: "#666",
   },
   bestCityContainer: {
     padding: 16,

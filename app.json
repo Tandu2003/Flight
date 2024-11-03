@@ -4,11 +4,11 @@
     "slug": "Fight-App",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "https://res.cloudinary.com/dflpparty/image/upload/v1730650272/Flight/icon_oeckdt.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "https://res.cloudinary.com/dflpparty/image/upload/v1730650266/Flight/splash_th6wov.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,18 +17,16 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "https://res.cloudinary.com/dflpparty/image/upload/v1730650269/Flight/adaptive-icon_obsqt2.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "https://res.cloudinary.com/dflpparty/image/upload/v1730624872/Flight/icon_flight.png"
     },
-    "plugins": [
-      "expo-router"
-    ],
+    "plugins": ["expo-router"],
     "experiments": {
       "typedRoutes": true
     }

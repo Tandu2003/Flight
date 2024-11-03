@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  Image,
-  ScrollView,
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-  TextInput,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { Image, ScrollView, Text, View, FlatList, TouchableOpacity, TextInput } from "react-native";
 import { FontAwesome, FontAwesome6, Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 import styles from "./Home";
 import Loading from "@/src/components/Loading";
+// import { useNavigation } from "@react-navigation/native";
 
 interface City {
   id: number;
@@ -22,6 +14,8 @@ interface City {
   minPrice: number;
   maxPrice: number;
 }
+
+// const navigation = useNavigation();
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -50,18 +44,14 @@ const Home = () => {
         <Image source={{ uri: item.image }} style={styles.bestCityImage} />
         <Text style={styles.bestCityName}>{item.city}</Text>
         <Text style={styles.bestCityPrice}>
-          From {item.minPrice} to {item.maxPrice}
+          From ${item.minPrice} to ${item.maxPrice}
         </Text>
       </View>
     );
   };
 
-  const renderDestination = ({ item }: { item: City }) => {
-    return (
-      <View style={styles.destinationItem}>
-        <Image source={{ uri: item.image }} style={styles.destinationImage} />
-      </View>
-    );
+  const handleSearch = () => {
+    router.push("/pages/Booking");
   };
 
   if (loading) {
@@ -88,16 +78,15 @@ const Home = () => {
           <FontAwesome6 name="user-circle" size={50} color="black" />
         </View>
 
-        <View style={styles.searchButton}>
-          <TouchableOpacity>
-            <Ionicons name="search-sharp" size={30} color="black" />
-          </TouchableOpacity>
-          <TextInput
-            placeholder="Find a flight"
-            placeholderTextColor={"#a1a1a1"}
-            style={styles.textSearch}
-          />
-        </View>
+        <TouchableOpacity
+          style={styles.searchButton}
+          onPress={() => {
+            handleSearch();
+          }}
+        >
+          <Ionicons name="search-sharp" size={30} color="black" />
+          <Text style={styles.textSearch}>Find a flight</Text>
+        </TouchableOpacity>
 
         <View style={styles.bestCityContainer}>
           <Text style={styles.bestCityTitle}>The best cities for you</Text>
@@ -109,14 +98,13 @@ const Home = () => {
             showsHorizontalScrollIndicator={false}
           />
         </View>
-
         <View style={styles.destinationContainer}>
           <Text style={styles.destinationTitle}>Explore Destinations</Text>
-          <FlatList
-            data={citys}
-            renderItem={renderDestination}
-            keyExtractor={(item) => item.id.toString()}
-          />
+          {citys.map((item: City) => (
+            <View key={item.id} style={styles.destinationItem}>
+              <Image source={{ uri: item.image }} style={styles.destinationImage} />
+            </View>
+          ))}
         </View>
       </ScrollView>
 
