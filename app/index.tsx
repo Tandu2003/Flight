@@ -1,9 +1,11 @@
 import React from "react";
 
-import Home from "@/app/pages/Home";
+// import Home from "./pages/Home";
+import Booking from "./pages/Booking";
 
 const App = () => {
-  return <Home />;
+  // return <Home />;
+  return <Booking />;
 };
 
 export default App;
