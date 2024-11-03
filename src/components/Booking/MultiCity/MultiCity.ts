@@ -1,0 +1,146 @@
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+  flightText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#000",
+  },
+  removeButton: {
+    position: "absolute",
+    right: 0,
+    fontSize: 32,
+    lineHeight: 40,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    paddingVertical: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 6,
+  },
+  inputWrapper: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#f2f2f2",
+    borderRadius: 10,
+    padding: 10,
+  },
+  icon: {
+    paddingHorizontal: 10,
+  },
+  input: {
+    flex: 1,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#888",
+  },
+  dateContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  dateWrapper: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#f2f2f2",
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 18,
+  },
+  dateInput: {
+    flex: 1,
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#888",
+  },
+  addButton: {
+    alignItems: "center",
+    borderRadius: 6,
+    paddingVertical: 12,
+    borderWidth: 1,
+    borderColor: "#00BDD6",
+  },
+  addButtonText: {
+    color: "#00BDD6",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  travellerContainer: {
+    marginTop: 20,
+    paddingVertical: 18,
+    flexDirection: "row",
+    alignItems: "center",
+    borderTopWidth: 1,
+    borderTopColor: "#ccc",
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
+  },
+  travellerWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  travellerText: {
+    fontWeight: "700",
+    fontSize: 18,
+  },
+  caretIcon: {
+    position: "absolute",
+    right: 4,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    backgroundColor: "#A2A3A5",
+  },
+  modalHeader: {
+    marginTop: 60,
+    paddingVertical: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#fff",
+    borderTopStartRadius: 6,
+    borderTopEndRadius: 6,
+  },
+  modalTitle: {
+    fontSize: 26,
+    fontWeight: "bold",
+  },
+  modalClose: {
+    position: "absolute",
+    right: 20,
+    top: 10,
+    fontSize: 32,
+    lineHeight: 40,
+  },
+  modalDateContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 16,
+    backgroundColor: "#fff",
+  },
+  modalFooter: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    paddingHorizontal: 20,
+    paddingVertical: 40,
+  },
+  modalFooterText: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  modalFooterButton: {
+    backgroundColor: "#00BDD6",
+    alignItems: "center",
+    borderRadius: 6,
+  },
+  modalFooterButtonText: {
+    color: "#fff",
+    fontSize: 20,
+    paddingVertical: 8,
+    paddingHorizontal: 66,
+  },
+});
