@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-
-import styles from "./Booking";
 import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
+
+import styles from "./Booking";
+import RoundTrip from "@/src/components/Booking/RoundTrip";
 
 const Booking = () => {
   const TRIP_TABS = {
@@ -51,7 +52,7 @@ const Booking = () => {
       </View>
 
       <View style={styles.tabContent}>
-        {selectedTab === TRIP_TABS.ROUND_TRIP && <Text>Round Trip</Text>}
+        {selectedTab === TRIP_TABS.ROUND_TRIP && <RoundTrip />}
         {selectedTab === TRIP_TABS.ONE_WAY && <Text>One Way</Text>}
         {selectedTab === TRIP_TABS.MULTI_CITY && <Text>Multi City</Text>}
       </View>
