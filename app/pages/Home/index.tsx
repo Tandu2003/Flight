@@ -3,9 +3,9 @@ import { Image, ScrollView, Text, View, FlatList, TouchableOpacity, TextInput } 
 import { FontAwesome, FontAwesome6, Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 
-import styles from "./Home";
+import styles from "./style";
 import Loading from "@/src/components/Loading";
-// import { useNavigation } from "@react-navigation/native";
+import Footer from "../Footer";
 
 interface City {
   id: number;
@@ -15,18 +15,9 @@ interface City {
   maxPrice: number;
 }
 
-// const navigation = useNavigation();
-
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [citys, setCitys] = useState([]);
-  const [active, setActive] = useState<string>("home");
-
-  const menuItems = [
-    { name: "home", icon: "home", label: "Home" },
-    { name: "explore", icon: "globe", label: "Explore" },
-    { name: "profile", icon: "user", label: "Profile" },
-  ];
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -108,24 +99,7 @@ const Home = () => {
         </View>
       </ScrollView>
 
-      <View style={styles.footerContainer}>
-        {menuItems.map((item) => (
-          <TouchableOpacity
-            key={item.name}
-            style={styles.footerItem}
-            onPress={() => setActive(item.name)}
-          >
-            <FontAwesome
-              name={item.icon as any}
-              size={24}
-              color={active === item.name ? "green" : "#666"}
-            />
-            <Text style={[styles.footerText, { color: active === item.name ? "green" : "#666" }]}>
-              {item.label}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+      <Footer activeTab="home" />
     </View>
   );
 };

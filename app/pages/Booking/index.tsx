@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
 
-import styles from "./Booking";
+import styles from "./style";
 import RoundTrip from "@/src/components/Booking/RoundTrip";
 import OneWay from "@/src/components/Booking/OneWay";
 import MultiCity from "@/src/components/Booking/MultiCity";
